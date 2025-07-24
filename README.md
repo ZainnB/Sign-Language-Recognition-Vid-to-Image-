@@ -91,7 +91,7 @@ To improve sign focus:
 ---
 
 ## ✅ Current Accuracy (Trimmed + Aggregated)
-- CNN Accuracy: **~77%**
+- CNN Accuracy: **~40%** (rn)
 - Based on top-5 landmark combination from 26 signs (A–Z), 2 samples each.
 
 ---
