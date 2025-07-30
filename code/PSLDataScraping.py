@@ -10,7 +10,8 @@ import os
 import glob
 
 wordList=[
-    "Outside", "Ancient", "Parents", "Annual", "Request", "Another", "Roundabout", "Any", "Say", "Because", "She",
+    "10","50","100","Near", "Off", "Often", "Abnormal", "One", "Absolutely", "Our", "Afraid", "Outdoors", "Almost", "Outside",
+    "Ancient", "Parents", "Annual", "Request", "Another", "Roundabout", "Any", "Say", "Because", "She",
     "Both", "Sister", "Brain", "So (Accentuator)", "Children", "So (In Order To)", "Come", "Some",
     "Continuously", "Soon", "Do", "Subsequent", "Dry", "Subway", "Elevator", "Sufficient", "Empty", "There",
     "Eye", "This", "Father", "Thoughtful", "Few", "Tongue", "From", "Trust", "Go", "Truthful", "He",
@@ -46,8 +47,8 @@ chrome_options.add_experimental_option("prefs", {
 service = Service(path)
 driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.get("https://psl.org.pk")
-Psl_Dictionary=WebDriverWait(driver,25).until(EC.presence_of_element_located((By.XPATH,"//a[@href='/dictionary']")))
-driver.execute_script("arguments[0].click();", Psl_Dictionary)
+Psl_Dictionary=WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH,"//a[@href='/dictionary']")))
+Psl_Dictionary.click()
 driver.implicitly_wait(10)
 
 
@@ -70,16 +71,16 @@ for word in wordList:
         search_toggle=WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "search-toggle")))
         search_toggle.click()
 
-        search_bar = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='collapseExample']/div/input")))
+        search_bar = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='collapseExample']/div/input")))
         search_bar.clear()
         search_bar.send_keys(word)
 
-        results = WebDriverWait(driver, 20).until(
+        results = WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.CLASS_NAME, "possible-search-items"))
         )
         print([item.text for item in results])
         target_text = str(word).lower()
-        viewport = WebDriverWait(driver, 20).until(
+        viewport = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, "cdk-virtual-scroll-viewport"))
         )
 
@@ -100,8 +101,8 @@ for word in wordList:
                 items = driver.find_elements(By.CLASS_NAME, "possible-search-items")
                 item = items[match_index]
                 driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", item)
-                time.sleep(0.5)
-                driver.execute_script("arguments[0].click();", item)
+                time.sleep(0.2)
+                item.click()
                 print(f"✅ Clicked on: {item_text}")
                 found = True
                 break
