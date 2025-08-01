@@ -5,11 +5,11 @@ import numpy as np
 # === Config ===
 IMG_SIZE = 128
 TOP5_FILE = "top5_landmarks.txt"
-TRAIN_ROOT = "data/landmark_images/train"
-TEST_ROOT = "data/landmark_images/test"
+TRAIN_ROOT = "PSL_Dictionary/landmark_images/train"
+TEST_ROOT = "PSL_Dictionary/landmark_images/test"
 
-OUTPUT_TRAIN = "data/aggregated/train"
-OUTPUT_TEST = "data/aggregated/test"
+OUTPUT_TRAIN = "PSL_Dictionary/aggregated/train"
+OUTPUT_TEST = "PSL_Dictionary/aggregated/test"
 
 os.makedirs(OUTPUT_TRAIN, exist_ok=True)
 os.makedirs(OUTPUT_TEST, exist_ok=True)
@@ -52,4 +52,4 @@ process_set(TRAIN_ROOT, OUTPUT_TRAIN)
 print("Combining testing set...")
 process_set(TEST_ROOT, OUTPUT_TEST)
 
-print("Done. Combined images saved in 'data/aggregated/train' and 'data/aggregated/test'")
+print("Done. Combined images saved in 'PSL_Dictionary/aggregated/train' and 'PSL_Dictionary/aggregated/test'")

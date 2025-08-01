@@ -2,7 +2,6 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import os
-import string
 
 # === Constants ===
 IMG_WIDTH = 128
@@ -56,15 +55,14 @@ def extract_landmark_images(video_path, sign_name, mode, output_base):
 
 # === Batch Runner ===
 def run_extraction_pipeline():
-    output_base = 'data/landmark_images'
-    for letter in string.ascii_uppercase:
-        # First attempt → training
-        video_train = os.path.join('data', 'vid1', f"{letter}_1.mp4")
-        extract_landmark_images(video_train, letter, mode='train', output_base=output_base)
-
-        # Second attempt → testing
-        video_test = os.path.join('data', 'vid2', f"{letter}_2.mp4")
-        extract_landmark_images(video_test, letter, mode='test', output_base=output_base)
+    output_base = 'PSL_Dictionary/landmark_images'
+    
+    for mode, folder in [('train', 'PSL_Dictionary/vid1'), ('test', 'PSL_Dictionary/vid2')]:
+        for file in os.listdir(folder):
+            if file.endswith('.mp4'):
+                file_path = os.path.join(folder, file)
+                sign_name = os.path.splitext(file)[0]  # Remove .mp4
+                extract_landmark_images(file_path, sign_name, mode, output_base)
 
 # === Run it ===
 run_extraction_pipeline()
