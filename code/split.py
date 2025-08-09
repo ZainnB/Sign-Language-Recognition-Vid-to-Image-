@@ -2,7 +2,7 @@ import cv2
 import os
 
 # === Input & Output Paths ===
-input_folder = os.path.join('downloads')
+input_folder = os.path.join('PSL_Dictionary', 'full_vids')
 output_folder_1 = os.path.join('PSL_Dictionary', 'vid1')
 output_folder_2 = os.path.join('PSL_Dictionary', 'vid2')
 
