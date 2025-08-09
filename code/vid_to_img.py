@@ -61,7 +61,11 @@ def run_extraction_pipeline():
         for file in os.listdir(folder):
             if file.endswith('.mp4'):
                 file_path = os.path.join(folder, file)
-                sign_name = os.path.splitext(file)[0]  # Remove .mp4
+                base_name = os.path.splitext(file)[0]
+                if base_name.endswith('_1') or base_name.endswith('_2'):
+                    base_name = base_name.rsplit('_', 1)[0]
+                
+                sign_name = base_name
                 extract_landmark_images(file_path, sign_name, mode, output_base)
 
 # === Run it ===
