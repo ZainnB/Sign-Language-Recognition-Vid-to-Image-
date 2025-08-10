@@ -1,0 +1,6 @@
+Feature_Aggregation: 0.5250
+Majority_Voting: 0.5500
+Ensemble_2_Landmarks: 0.5250
+Ensemble_3_Landmarks: 0.5625
+Ensemble_4_Landmarks: 0.5500
+Ensemble_5_Landmarks: 0.5375
