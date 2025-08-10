@@ -1,0 +1,6 @@
+Feature Aggregation Accuracy: 52.50%
+Majority Voting Accuracy: 55.00%
+Ensemble Learning (Top 2) Accuracy: 52.50%
+Ensemble Learning (Top 3) Accuracy: 56.25%
+Ensemble Learning (Top 4) Accuracy: 55.00%
+Ensemble Learning (Top 5) Accuracy: 53.75%
